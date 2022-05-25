@@ -113,5 +113,5 @@ const getArticles = (request, response) => {
     getArticleById,
     createArticle,
     updateArticle,
-    deleteArticle,
+    deleteArticle
   }

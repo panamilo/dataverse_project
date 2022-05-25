@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ArticleAddition from './components/ArticleAddition'
+import ArticleEdit from './components/ArticleEdit'
 import CategoryAddition from './components/CategoryAddition'
-import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 import { Route, Switch } from 'react-router-dom'
 
@@ -101,6 +101,25 @@ return (
     <h5>A simple app to create, read, update and delete data with React, Express, Node, PostgreSQL</h5>
 
     <div className="flex-row">
+    {editing ?
+          <div className="flex-large">
+            <ArticleEdit
+              submitArticleEdit={submitArticleEdit}
+              handleInputChange={handleInputChange}
+              currentArticle={currentArticle}
+            />
+          </div>
+          :
+          <div className="flex-large">
+            <ArticleAddition
+              submitNewArticle={submitNewArticle}
+              handleInputChange={handleInputChange}
+              currentArticle={currentArticle}
+              
+            />
+            
+          </div>
+        }
 
       <div className="flex-large">
       <h3>List of current Articles</h3>
