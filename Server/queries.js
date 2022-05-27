@@ -32,7 +32,7 @@ const getCategories = (request, response) => {
   const createCategory = (request, response) => {
     const { name,description} = request.body
   
-    pool.query('INSERT INTO categories (name, description) VALUES ($1, $2)', [name, description], (error, results) => {
+    pool.query('INSERT INTO categories (name) VALUES ($1)', [name], (error, results) => {
       if (error) {
         throw error
       }
@@ -73,7 +73,7 @@ const getArticles = (request, response) => {
   const createArticle = (request, response) => {
     const { title,description, category_id} = request.body
   
-    pool.query('INSERT INTO article (title, description, category_id) VALUES ($1, $2 , $3)', [title, description, category_id], (error, results) => {
+    pool.query('INSERT INTO articles (title, description, category_id) VALUES ($1, $2 , $3)', [title, description, category_id], (error, results) => {
       if (error) {
         throw error
       }
@@ -113,5 +113,9 @@ const getArticles = (request, response) => {
     getArticleById,
     createArticle,
     updateArticle,
-    deleteArticle
+    deleteArticle,
+    getCategories,
+    getCategoryById,
+    createCategory,
+    deleteCategory
   }

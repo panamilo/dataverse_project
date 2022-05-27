@@ -13,7 +13,7 @@ const corsOptions = {
   };
 
 app.use(bodyParser.json())
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(
   bodyParser.urlencoded({
     extended: true,
@@ -25,10 +25,12 @@ app.get('/', (request, response) => {
   })
 
 app.get('/articles', db.getArticles)
-app.get('articles/:id', db.getArticleById)
-app.post('articles', db.createArticle)
-app.put('articles/:id', db.updateArticle)
-app.delete('articles/:id', db.deleteArticle)
+app.get('/categories',db.getCategories)
+app.get('/articles/:id', db.getArticleById)
+app.post('/articles', db.createArticle)
+app.post('/categories',db.createCategory)
+app.put('/articles/:id', db.updateArticle)
+app.delete('/articles/:id', db.deleteArticle)
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)
