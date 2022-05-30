@@ -29,14 +29,13 @@ const getCategories = (request, response) => {
     })
   }
 
-  const createCategory = (request, response) => {
-    const { name,description} = request.body
-  
-    pool.query('INSERT INTO categories (name) VALUES ($1)', [name], (error, results) => {
+  const createCategory = async (request, response) => {
+    const {name} = request.body
+    pool.query('INSERT INTO categories(name) VALUES ($1)', [name], (error, results) => {
       if (error) {
         throw error
       }
-      response.status(201).send(`Category added with ID: ${results.insertId}`)
+      response.status(201).json({status:true, message: "Testing this"})
     })
   }
 

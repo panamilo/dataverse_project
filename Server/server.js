@@ -6,18 +6,14 @@ const db = require('./queries')
 const cors = require("cors")
 const path = require("path");
 
-
-const corsOptions = {
-    origin: "http://localhost:3000",
-    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  };
-
 app.use(bodyParser.json())
-app.use(cors(corsOptions))
+app.use(cors())
 app.use(
   bodyParser.urlencoded({
     extended: true,
   })
+  
+  
 )
 
 app.get('/', (request, response) => {
@@ -27,8 +23,8 @@ app.get('/', (request, response) => {
 app.get('/articles', db.getArticles)
 app.get('/categories',db.getCategories)
 app.get('/articles/:id', db.getArticleById)
-app.post('/articles', db.createArticle)
-app.post('/categories',db.createCategory)
+app.post('/articles/new', db.createArticle)
+app.post('/categories/new',db.createCategory)
 app.put('/articles/:id', db.updateArticle)
 app.delete('/articles/:id', db.deleteArticle)
 
