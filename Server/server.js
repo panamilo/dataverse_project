@@ -27,6 +27,7 @@ app.post('/articles/new', db.createArticle)
 app.post('/categories/new',db.createCategory)
 app.put('/articles/:id', db.updateArticle)
 app.delete('/articles/:id', db.deleteArticle)
+app.delete('/category/:id',db.deleteCategory)
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)

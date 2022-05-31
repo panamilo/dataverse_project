@@ -1,31 +1,37 @@
 import {
-    DeleteForever
-  } from "@mui/icons-material";
-  import {
     Box,
     List,
     ListItem,
-    ListItemButton,
-    ListItemIcon,
     ListItemText,
     Typography,
     TextField,
     Button,
   } from "@mui/material";
   import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 
   const Sidebar = ({mode,setMode}) => {
 
-  
-    const navigate=useNavigate();
-
-  const [categories,setCategories] = useState([{name:'', description: ''}])
+  const [categories,setCategories] = useState([{id: 0,name:'', description: ''}])
   const [newCategory,setCategory] = useState([])
+  const [status,setStatus]=useState(false);
 
   function handleChange(e){
       setCategory({...newCategory,[e.target.id]:e.target.value});
+  }
+  async function handleDelete(id){
+    await fetch(`http://localhost:8080/category/${id}`,{
+      method: 'DELETE',
+      headers:{
+        Accept: 'application/json',
+        'Content-Type':'application/json'
+      },
+    })
+    .then(()=> {
+    let updatedCategories = [...categories].filter((i)=> i.id !== id);
+    setCategories(updatedCategories);
+    alert("Category successfully deleted.")
+    })
   }
 
   const handleSubmit = async (e) => {
@@ -35,7 +41,8 @@ import { useNavigate } from "react-router-dom";
       alert("Please fill in the category name first");
       return ;
     }
-    else{
+
+    else {
       console.log(newCategory.name)
       await fetch('http://localhost:8080/categories/new',
       {
@@ -50,7 +57,10 @@ import { useNavigate } from "react-router-dom";
       .then((data) => {
        alert(data.message)
        if (data.status) {
-        navigate("/articles");
+        setStatus(true);
+        setCategory({
+          name: ''
+        })
       }
        
       })
@@ -70,15 +80,20 @@ import { useNavigate } from "react-router-dom";
       .then((result)=> {
           console.log(result)
           setCategories(result)
+          setStatus(false);
       })
 
-    },[]);
+    },[status]);
 
     const categoryList = categories.map((category) => {
       return (
         <ListItem disablePadding>
         <ListItemText primary={category.name} />
-            <Button variant="outlined" color="error">DELETE
+            <Button variant="outlined" color="error" onClick={()=>
+              {
+                console.log(category.id);
+                handleDelete(category.id);
+            }}>DELETE
               </Button>
           </ListItem>
       )

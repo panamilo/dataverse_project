@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import AppHeader from './components/Bars/AppHeader';
 import Sidebar from './components/Bars/Sidebar';
-import ArticleList from './components/Article/ArticleList';
+import Article from './components/Article/Article';
 import ArticleAdd from './components/Article/ArticleAdd';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
@@ -19,14 +19,21 @@ function App()  {
     <>
     <Box>
       <AppHeader />
+     
     <Stack direction="row" spacing={2} justifyContent="space-between">
-      <Sidebar />
-    </Stack>
-    <Routes>
-      <Route path="/articles" element={<ArticleList />} />
-      <Route path="/ArticleAdd" element={<ArticleAdd />} />
-    </Routes>
-    </Box>
+      
+      </Stack>
+      </Box>
+      <Box>
+      <Routes>
+     <Route path="/articles" element={<Article />} />
+      <Route path="/ArticleAdd" element={<ArticleAdd />} /> 
+      </Routes>
+      </Box>
+    
+    
+    
+    
     </>
   );
 }
