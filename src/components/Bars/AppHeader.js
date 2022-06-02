@@ -6,7 +6,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -17,7 +16,11 @@ import ListItemText from '@mui/material/ListItemText';
 import {Button,TextField} from '@mui/material';
 import {Link} from 'react-router-dom'
 
-const drawerWidth = 240;
+
+
+export default function ArticleAdd() {
+
+  const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -62,9 +65,9 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
   justifyContent: 'flex-end',
+  backgroundColor: '#ffffff',
 }));
 
-export default function ArticleAdd() {
     const [categories,setCategories] = useState([{id: 0,name:'', description: ''}])
   const [newCategory,setCategory] = useState([])
   const [status,setStatus]=useState(false);
@@ -198,6 +201,7 @@ export default function ArticleAdd() {
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
+            color: 'primary'
           },
         }}
         variant="persistent"
@@ -211,33 +215,21 @@ export default function ArticleAdd() {
         </DrawerHeader>
         <Divider />
         <Box>
-        <List>
+        <List  sx={{m: 2}}>
         {categoryList}
         </List>
         </Box>
         <Divider />
+        <Box  sx={{m: 2}}>
         <form onSubmit={handleSubmit}>
             <label htmlFor="name">Enter a new category: </label>
           <TextField value={newCategory.name || ''} onChange={handleChange} id="name" label=" Category Name" variant="standard" />
        <Button type="submit" variant="contained">Add</Button>
        </form>
+       </Box>
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-          enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-          imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-          Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-          Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-          nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-          leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-          feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-          consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-          sapien faucibus et molestie ac.
-        </Typography>
       </Main>
     </Box>
   );

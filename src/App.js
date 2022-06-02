@@ -1,9 +1,8 @@
-import { Box, Container, Stack } from '@mui/material';
-import React, { useState, useEffect } from 'react';
+import { Box, Stack } from '@mui/material';
+import React, {useEffect } from 'react';
 import './App.css';
 import AppHeader from './components/Bars/AppHeader';
-import Sidebar from './components/Bars/Sidebar';
-import Article from './components/Article/Article';
+import ArticleList from './components/Article/ArticleList';
 import ArticleAdd from './components/Article/ArticleAdd';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
@@ -26,8 +25,8 @@ function App()  {
       </Box>
       <Box>
       <Routes>
-     <Route path="/articles" element={<Article />} />
-      <Route path="/ArticleAdd" element={<ArticleAdd />} /> 
+     <Route path="/articles" element={<ArticleList />} />
+     <Route path="/articleAdd" element={<ArticleAdd />} />
       </Routes>
       </Box>
     
