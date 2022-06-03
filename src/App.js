@@ -4,6 +4,7 @@ import './App.css';
 import AppHeader from './components/Bars/AppHeader';
 import ArticleList from './components/Article/ArticleList';
 import ArticleAdd from './components/Article/ArticleAdd';
+import ArticleEdit from './components/Article/ArticleEdit';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
 function App()  {
@@ -27,6 +28,7 @@ function App()  {
       <Routes>
      <Route path="/articles" element={<ArticleList />} />
      <Route path="/articleAdd" element={<ArticleAdd />} />
+     <Route path="/article/:id" element={<ArticleEdit />} />
       </Routes>
       </Box>
     

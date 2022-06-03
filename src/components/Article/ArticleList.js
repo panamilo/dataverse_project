@@ -72,7 +72,7 @@ const Item = styled(Paper)(({ theme }) => ({
   }));
 
 
-  const articleListaki  = articles.map((article)=>{
+  const articleList  = articles.map((article)=>{
     return (
     <Grid item xs={6} md={4}>
     <Item><Card >
@@ -97,7 +97,9 @@ alt="article logo"
 </Typography>
 </CardContent>
 <CardActions disableSpacing>
+<Link to={"/article/" + article.id} className='App-link'>
 <Button variant="outlined">EDIT</Button>
+</Link>
 <Button variant="outlined" color="error" sx={{m: 2}} onClick={()=> {
   console.log(article.id)
   handleDelete(article.id)}}>DELETE</Button>
@@ -124,7 +126,7 @@ aria-label="show more"
         return(
           
             <Grid sx={{ flexGrow: 1 }} container spacing={2}>
-              <>{articleListaki}</>           
+              <>{articleList}</>           
           </Grid>
         )
         

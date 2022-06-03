@@ -22,10 +22,10 @@ app.get('/', (request, response) => {
 
 app.get('/articles', db.getArticles)
 app.get('/categories',db.getCategories)
-app.get('/articles/:id', db.getArticleById)
-app.post('/articles/new', db.createArticle)
+app.get('/article/:id', db.getArticleById)
+app.post('/article/new', db.createArticle)
 app.post('/categories/new',db.createCategory)
-app.put('/articles/:id', db.updateArticle)
+app.put('/article/:id', db.updateArticle)
 app.delete('/article/:id', db.deleteArticle)
 app.delete('/category/:id',db.deleteCategory)
 
