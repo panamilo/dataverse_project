@@ -6,18 +6,14 @@ const db = require('./queries')
 const cors = require("cors")
 const path = require("path");
 
-
-const corsOptions = {
-    origin: "http://localhost:3000",
-    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  };
-
 app.use(bodyParser.json())
 app.use(cors())
 app.use(
   bodyParser.urlencoded({
     extended: true,
   })
+  
+  
 )
 
 app.get('/', (request, response) => {
@@ -25,10 +21,13 @@ app.get('/', (request, response) => {
   })
 
 app.get('/articles', db.getArticles)
-app.get('articles/:id', db.getArticleById)
-app.post('articles', db.createArticle)
-app.put('articles/:id', db.updateArticle)
-app.delete('articles/:id', db.deleteArticle)
+app.get('/categories',db.getCategories)
+app.get('/article/:id', db.getArticleById)
+app.post('/article/new', db.createArticle)
+app.post('/categories/new',db.createCategory)
+app.put('/article/:id', db.updateArticle)
+app.delete('/article/:id', db.deleteArticle)
+app.delete('/category/:id',db.deleteCategory)
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)

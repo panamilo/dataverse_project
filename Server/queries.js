@@ -29,21 +29,20 @@ const getCategories = (request, response) => {
     })
   }
 
-  const createCategory = (request, response) => {
-    const { name,description} = request.body
-  
-    pool.query('INSERT INTO categories (name, description) VALUES ($1, $2)', [name, description], (error, results) => {
+  const createCategory = async (request, response) => {
+    const {name} = request.body
+    pool.query('INSERT INTO categories(name) VALUES ($1)', [name], (error, results) => {
       if (error) {
         throw error
       }
-      response.status(201).send(`Category added with ID: ${results.insertId}`)
+      response.status(201).json({status:true, message: "Category successfully added."})
     })
   }
 
   
-  const deleteCategory = (request, response) => {
+  const deleteCategory = async (request, response) => {
     const id = parseInt(request.params.id)
-  
+    console.log(id)
     pool.query('DELETE FROM categories WHERE id = $1', [id], (error, results) => {
       if (error) {
         throw error
@@ -51,19 +50,17 @@ const getCategories = (request, response) => {
       response.status(200).send(`Category deleted with ID: ${id}`)
     })
   }
-
-const getArticles = (request, response) => {
-  pool.query('SELECT * FROM articles ORDER BY id ASC', (error, results) => {
-    if (error) {
-      throw error
-    }
-    response.status(200).json(results.rows)
-  })
+  const getArticles = (request, response) => {
+    pool.query('SELECT articles.id,articles.category_id,articles.title,articles.description,articles.author,categories.name from articles inner join categories ON articles.category_id=categories.id ORDER BY articles.id ASC', (error, results) => {
+      if (error) {
+        throw error
+      }
+      response.status(200).json(results.rows)
+    })
 }
   const getArticleById = (request, response) => {
     const id = parseInt(request.params.id)
-  
-    pool.query('SELECT * FROM articles WHERE id = $1', [id], (error, results) => {
+    pool.query('SELECT articles.id,articles.category_id,articles.title,articles.description,articles.author,categories.name from articles inner join categories ON articles.category_id=categories.id WHERE articles.id = $1', [id], (error, results) => {
       if (error) {
         throw error
       }
@@ -71,27 +68,28 @@ const getArticles = (request, response) => {
     })
   }
   const createArticle = (request, response) => {
-    const { title,description, category_id} = request.body
-  
-    pool.query('INSERT INTO article (title, description, category_id) VALUES ($1, $2 , $3)', [title, description, category_id], (error, results) => {
+    console.log(request)
+    const { title,description, undefined,author} = request.body
+    
+    pool.query('INSERT INTO articles (title, description,category_id, author) VALUES ($1, $2 ,(SELECT id from categories where name=$3), $4)', [title, description, undefined,author], (error, results) => {
       if (error) {
         throw error
       }
-      response.status(201).send(`Article added with ID: ${results.insertId}`)
+      response.status(201).json({message: "Article successfully added."})
     })
   }
   const updateArticle = (request, response) => {
     const id = parseInt(request.params.id)
-    const { title, description, category_id } = request.body
+    const { title, description,author } = request.body
   
     pool.query(
-      'UPDATE articles SET title = $1, description = $2, category_id=$3 WHERE id = $4',
-      [title,description, category_id, id],
+      'UPDATE articles SET title = $1, description = $2, author=$3 WHERE id = $4',
+      [title,description, author, id],
       (error, results) => {
         if (error) {
           throw error
         }
-        response.status(200).send(`Article modified with ID: ${id}`)
+        response.status(200).json({message: "Ola good"})
       }
     )
   }
@@ -99,7 +97,6 @@ const getArticles = (request, response) => {
 
   const deleteArticle = (request, response) => {
     const id = parseInt(request.params.id)
-  
     pool.query('DELETE FROM articles WHERE id = $1', [id], (error, results) => {
       if (error) {
         throw error
@@ -113,5 +110,9 @@ const getArticles = (request, response) => {
     getArticleById,
     createArticle,
     updateArticle,
-    deleteArticle
+    deleteArticle,
+    getCategories,
+    getCategoryById,
+    createCategory,
+    deleteCategory
   }
