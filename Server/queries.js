@@ -97,7 +97,7 @@ const getCategories = (request, response) => {
       if (error) {
         throw error
       }
-      response.status(201).json({status: false,message: "Article successfully added."})
+      response.status(201).json({status: true,message: "Article successfully added."})
     })
   }
 }
