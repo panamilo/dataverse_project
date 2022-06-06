@@ -31,6 +31,12 @@ const getCategories = (request, response) => {
 
   const createCategory = async (request, response) => {
     const {name} = request.body
+    if(name.length>50){
+      response
+      .status(400)
+      .json({ status: false, message: "Name is too big" });
+    }
+    else {
     pool.query('INSERT INTO categories(name) VALUES ($1)', [name], (error, results) => {
       if (error) {
         throw error
@@ -38,6 +44,7 @@ const getCategories = (request, response) => {
       response.status(201).json({status:true, message: "Category successfully added."})
     })
   }
+}
 
   
   const deleteCategory = async (request, response) => {
@@ -70,18 +77,49 @@ const getCategories = (request, response) => {
   const createArticle = (request, response) => {
     console.log(request)
     const { title,description, undefined,author} = request.body
-    
+    if(title.length>100){
+      response
+      .status(400)
+      .json({ status: false, message: "Title is too big" });
+    }
+    else if(description.length>500){
+      response
+      .status(400)
+      .json({ status: false, message: "Description is too big" });
+    }
+    else if(author.length>100){
+      response
+      .status(400)
+      .json({ status: false, message: "Author name is too big" });
+    }
+    else {
     pool.query('INSERT INTO articles (title, description,category_id, author) VALUES ($1, $2 ,(SELECT id from categories where name=$3), $4)', [title, description, undefined,author], (error, results) => {
       if (error) {
         throw error
       }
-      response.status(201).json({message: "Article successfully added."})
+      response.status(201).json({status: false,message: "Article successfully added."})
     })
   }
+}
   const updateArticle = (request, response) => {
     const id = parseInt(request.params.id)
     const { title, description,author } = request.body
-  
+    if(title.length>100){
+      response
+      .status(400)
+      .json({ status: false, message: "Title is too big" });
+    }
+    else if(description.length>500){
+      response
+      .status(400)
+      .json({ status: false, message: "Description is too big" });
+    }
+    else if(author.length>100){
+      response
+      .status(400)
+      .json({ status: false, message: "Author name is too big" });
+    }
+    else {
     pool.query(
       'UPDATE articles SET title = $1, description = $2, author=$3 WHERE id = $4',
       [title,description, author, id],
@@ -89,10 +127,11 @@ const getCategories = (request, response) => {
         if (error) {
           throw error
         }
-        response.status(200).json({message: "Ola good"})
+        response.status(200).json({status: true,message: "Article successfully updated. "})
       }
     )
   }
+}
 
 
   const deleteArticle = (request, response) => {
