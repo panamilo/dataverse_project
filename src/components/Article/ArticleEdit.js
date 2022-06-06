@@ -42,7 +42,8 @@ export default function ArticleEdit() {
         .then((response) => response.json())
         .then((data) => {
           alert(data.message)
-        navigate("/articles")
+          if(data.status){
+        navigate("/articles")}
         });
     }
   };

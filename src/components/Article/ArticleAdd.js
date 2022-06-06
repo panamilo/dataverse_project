@@ -58,7 +58,8 @@ export default function ArticleAdd() {
   
   .then((data)=>{
      alert(data.message)
-     navigate('/articles')
+     if(data.status){
+     navigate('/articles')}
   })
 }
   }
