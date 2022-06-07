@@ -12,6 +12,11 @@ Clicking on the drawer button on the side you can see the categories that are cu
 
 ![image](https://user-images.githubusercontent.com/91724132/172167400-a3938a5b-ab2d-40e9-b05f-5cc39b5c09dc.png)
 
+Clicking on the Show more toggle button you can see the details of the article you want.
+
+![image](https://user-images.githubusercontent.com/91724132/172316725-8e9a3fad-8b36-4543-9f58-3fa73f9c40f6.png)
+
+
 Clicking on the CREATE button on the Appbar the user can create a new article with his respective choices just like in the screen below:
 
 ![image](https://user-images.githubusercontent.com/91724132/172167599-dd6c25f5-e6dc-46a6-aaf2-999c27d9adcf.png)
