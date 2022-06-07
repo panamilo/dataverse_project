@@ -70,6 +70,9 @@ export default function ArticleEdit() {
   useEffect(()=> {
       getArticleById(params.id)
  },[article.id]);
+
+
+ 
    return (
 
 <div>
@@ -116,6 +119,7 @@ export default function ArticleEdit() {
                 variant='outlined'
               />
             </FormControl>
+
           </div>
 
           <Button
@@ -129,7 +133,7 @@ export default function ArticleEdit() {
           </Button>
           <Button
             variant="outlined"
-            color="secondary"
+            color="error"
             onClick={() => {
               navigate("/articles");
             }}
