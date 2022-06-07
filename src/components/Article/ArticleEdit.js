@@ -32,7 +32,7 @@ export default function ArticleEdit() {
     ) {
       alert("Be sure you completed the fields first");
     } else {
-      await fetch(`http://localhost:8080/article/${article.id}`, {
+      await fetch(`/api/article/${article.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": 'application/json',
@@ -50,7 +50,7 @@ export default function ArticleEdit() {
 
 
   function getArticleById(id) {
-    fetch(`http://localhost:8080/article/${id}`, {
+    fetch(`/api/article/${id}`, {
       method: "GET",
       headers: {
         Accept: "application/json",

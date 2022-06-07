@@ -23,7 +23,7 @@ export default function ArticleAdd() {
     setArticle({ ...newArticle, [e.target.id]: e.target.value });
   }
   useEffect(() => {
-    fetch('http://localhost:8080/categories',
+    fetch('/api/categories',
       {
         headers:
           { 'Content-Type': 'application/json' },
@@ -45,7 +45,7 @@ export default function ArticleAdd() {
       return;
     }
     else {
-      await fetch(`http://localhost:8080/article/new`, {
+      await fetch(`/api/article/new`, {
         method: "POST",
         headers: {
           accept: "application/json",
