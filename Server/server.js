@@ -17,10 +17,9 @@ app.use(
   })
    
 )
-app.use(express.static(path.join(__dirname,"../build")))
-// if(process.env.NODE_ENV==="production") {
-//   app.use(express.static(path.join(__dirname,"../build")))
-// }
+if(process.env.NODE_ENV==="production") {
+  app.use(express.static(path.join(__dirname,"../build")))
+}
 
 app.get('/api', (request, response) => {
     response.json({ info: 'Node.js, Express, and Postgres API' })
