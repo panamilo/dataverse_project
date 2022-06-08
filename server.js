@@ -40,7 +40,7 @@ app.listen(PORT, () => {
 
 app.get("*", function (req, res) {
   res.sendFile(
-    path.join(__dirname, "  Client/build/index.html"),
+    path.join(__dirname, "Client/build/index.html"),
     function (err) {
       if (err) {
         res.status(500).send(__dirname);
