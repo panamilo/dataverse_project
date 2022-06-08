@@ -26,9 +26,10 @@
     "npm": "8.10.0"
   },
   "scripts": {
-    "start": "cd Server && node server.js",
-    "heroku-postbuild": "npm install && npm run build",
-    "build": "react-scripts build"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "proxy": "http://localhost:8080",
   "eslintConfig": {
