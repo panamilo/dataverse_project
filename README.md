@@ -1,3 +1,17 @@
+Application is now deployed on heroku. Only some minor bugs and details need polishing!|
+
+
+To run the app locally you need to :
+
+1) cd into projects directory
+2) npm install (if you have done this once SKIP this step.)
+3) node server.js
+4) cd into Client
+5) npm install (if you have done this once SKIP this step.)
+6) npm start
+7) browse to your localhost adress you have chosen and see the app running!
+
+
 This is a project I recently made using React,Node,Express,MaterialUI and Postgresql.
 
 The project resembles a simple blog project. User can create/edit/delete articles and assign them to categories he creates.
@@ -34,9 +48,6 @@ Or he can edit the article he wants by clicking the EDIT button and filling in t
 
 
 That concludes the core functionalities of the project. You can see more in depth of what and how is done by inspecting the code.
-
-
-Pending tasks: Fixing minor bugs, deployement to production like service(Heroku)
 
 
 
