@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-const db = require('../queries')
+const db = require('queries')
 const cors = require("cors")
 const path = require("path");
 const PORT=process.env.PORT || 8080
@@ -18,7 +18,7 @@ app.use(
    
 )
 if(process.env.NODE_ENV==="production") {
-  app.use(express.static(path.join(__dirname,"../build")))
+  app.use(express.static(path.join(__dirname,"Client/build")))
 }
 
 app.get('/api', (request, response) => {
@@ -40,7 +40,7 @@ app.listen(PORT, () => {
 
 app.get("*", function (req, res) {
   res.sendFile(
-    path.join(__dirname, "../build/index.html"),
+    path.join(__dirname, "  Client/build/index.html"),
     function (err) {
       if (err) {
         res.status(500).send(__dirname);
