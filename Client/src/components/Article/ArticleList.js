@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {Link} from 'react-router-dom'
-import { ArticleCard } from "../ArticleCard";
+import { ArticleCard } from "./ArticleCard";
 
 const ArticleList = () => {
 
@@ -19,7 +19,7 @@ const ArticleList = () => {
 
 
   useEffect(()=> {
-    fetch('http://localhost:8080/articles',
+    fetch('/api/articles',
     {
       headers:
       {'Content-Type' : 'application/json'},

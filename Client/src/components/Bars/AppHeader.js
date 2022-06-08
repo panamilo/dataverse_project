@@ -79,7 +79,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }
 
   async function handleDelete(id){
-    await fetch(`http://localhost:8080/category/${id}`,{
+    await fetch(`/api/category/${id}`,{
       method: 'DELETE',
       headers:{
         Accept: 'application/json',
@@ -103,7 +103,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
     else {
       console.log(newCategory.name)
-      await fetch('http://localhost:8080/categories/new',
+      await fetch('/api/categories/new',
       {
         method:'POST',
         headers:{
@@ -127,7 +127,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   }
 
   useEffect(()=> {
-    fetch('http://localhost:8080/categories',
+    fetch('/api/categories',
     {
       headers:
       {'Content-Type' : 'application/json'},

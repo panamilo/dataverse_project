@@ -25,7 +25,7 @@ export function ArticleCard(props) {
 
       
   async function handleDelete(id){
-    await fetch(`http://localhost:8080/article/${id}`,{
+    await fetch(`/api/article/${id}`,{
       method: 'DELETE',
       headers:{
         Accept: 'application/json',
@@ -33,7 +33,7 @@ export function ArticleCard(props) {
       },
     })
     .then(()=> {
-        fetch('http://localhost:8080/articles',
+        fetch('/api/articles',
         {
           headers:
           {'Content-Type' : 'application/json'},
