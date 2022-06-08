@@ -118,10 +118,10 @@ export default function ArticleAdd() {
               />
             </FormControl>
             <FormControl margin="normal">
-              <InputLabel htmlFor='name'>Category</InputLabel>
+              <InputLabel htmlFor='cat'>Category</InputLabel>
               <Select
-                id="name"
-                labelId="name"
+                id="cat"
+                labelId="cat"
                 autoWidth
                 value={newArticle.name}
                 defaultValue=""
