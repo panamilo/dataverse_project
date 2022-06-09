@@ -44,6 +44,16 @@ const getCategories = (request, response) => {
     })
   }
 
+  const getArticlesByCategory = (request, response) => {
+    const id = parseInt(request.params.id)
+  
+    pool.query('SELECT * FROM articles WHERE category_id = $1', [id], (error, results) => {
+      if (error) {
+        throw error
+      }
+      response.status(200).json(results.rows)
+    })
+  }
   const createCategory = async (request, response) => {
     const {name} = request.body
     if(name.length>50){
@@ -168,5 +178,6 @@ const getCategories = (request, response) => {
     getCategories,
     getCategoryById,
     createCategory,
-    deleteCategory
+    deleteCategory,
+    getArticlesByCategory
   }

@@ -28,6 +28,7 @@ app.get('/api', (request, response) => {
 app.get('/api/articles', db.getArticles)
 app.get('/api/categories',db.getCategories)
 app.get('/api/article/:id', db.getArticleById)
+app.get('/api/articlesbycat/:id',db.getArticlesByCategory)
 app.post('/api/article/new', db.createArticle)
 app.post('/api/categories/new',db.createCategory)
 app.put('/api/article/:id', db.updateArticle)

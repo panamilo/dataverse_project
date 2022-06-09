@@ -1,5 +1,5 @@
 import React ,{useState,useEffect} from 'react';
-import {Box,  FormControl, InputLabel,Input,Button,Select,MenuItem} from '@mui/material'
+import {Box,  FormControl, InputLabel,Input,Button} from '@mui/material'
 import { useNavigate, useParams } from 'react-router-dom';
 
 export default function ArticleEdit() {
@@ -89,17 +89,18 @@ export default function ArticleEdit() {
         >
           <div>
             <FormControl margin="normal">
-              <InputLabel htmlFor="title">Enter Title:</InputLabel>
+              <InputLabel htmlFor="title">Title:</InputLabel>
               <Input
                 id="title"
                 value={article.title || ""}
                 onChange={handleChange}
                 label="title"
                 size="small"
+                disabled={true}
               />
             </FormControl>
             <FormControl margin="normal">
-              <InputLabel htmlFor="description">Enter Description:</InputLabel>
+              <InputLabel htmlFor="description">Description:</InputLabel>
               <Input
                 id="description"
                 value={article.description || ""}
@@ -109,7 +110,7 @@ export default function ArticleEdit() {
               />
             </FormControl>
             <FormControl margin="normal">
-              <InputLabel htmlFor="author">Enter Author's name: </InputLabel>
+              <InputLabel htmlFor="author">Author's name: </InputLabel>
               <Input
                 id="author"
                 label="author"
@@ -117,6 +118,19 @@ export default function ArticleEdit() {
                 onChange={handleChange}
                 size="small"
                 variant='outlined'
+                disabled={true}
+              />
+            </FormControl>
+            <FormControl margin="normal">
+              <InputLabel htmlFor="category">Category: </InputLabel>
+              <Input
+                id="category"
+                label="category"
+                value={article.name || ""}
+                onChange={handleChange}
+                size="small"
+                variant='outlined'
+                disabled={true}
               />
             </FormControl>
 

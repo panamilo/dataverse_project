@@ -154,7 +154,9 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   const categoryList = categories.map((category) => {
     return (
       <ListItem disablePadding>
-      <ListItemText primary={category.name} />
+        <ListItemText>
+      <Link to={"/articlesbycat/" + category.id}> {category.name} </Link>
+      </ListItemText>
           <Button variant="outlined" color="error" onClick={()=>
             {
               console.log(category.id);
