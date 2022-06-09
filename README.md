@@ -26,6 +26,11 @@ Clicking on the drawer button on the side you can see the categories that are cu
 
 ![image](https://user-images.githubusercontent.com/91724132/172167400-a3938a5b-ab2d-40e9-b05f-5cc39b5c09dc.png)
 
+In addition, in the newest version i added a filter for categories. The user can now choose a category to filter the article list by like so:
+
+![image](https://user-images.githubusercontent.com/91724132/172854189-9c28f581-70eb-4c54-985d-e0cbdbcbdf6a.png)
+
+
 Clicking on the Show more toggle button you can see the details of the article you want.
 
 ![image](https://user-images.githubusercontent.com/91724132/172316725-8e9a3fad-8b36-4543-9f58-3fa73f9c40f6.png)
@@ -39,11 +44,9 @@ Similarly he can drop an article using the DELETE button on the home page
 
 ![image](https://user-images.githubusercontent.com/91724132/172167230-6fadf45e-b33b-4495-a9cd-97a5bcfc11ba.png)
 
-Or he can edit the article he wants by clicking the EDIT button and filling in the new information.
+Or he can edit the article he wants by clicking the EDIT button and filling in the new information. (the specifications required that ONLY the description should be editable. )
 
-
-
-![image](https://user-images.githubusercontent.com/91724132/172175097-3352e1bf-e9ae-4013-aa3a-088982b8ee3c.png)
+![image](https://user-images.githubusercontent.com/91724132/172854430-cc4bc5a7-31af-4db8-b4d4-61a672e1df86.png)
 
 
 
