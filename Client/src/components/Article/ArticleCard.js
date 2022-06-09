@@ -11,10 +11,11 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {Link} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 export function ArticleCard(props) {
     const {article,setArticles}=props;
-
+    const navigate= useNavigate()
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
         ...theme.typography.body2,
@@ -33,6 +34,7 @@ export function ArticleCard(props) {
       },
     })
     .then(()=> {
+        navigate("/articles")
         fetch('/api/articles',
         {
           headers:

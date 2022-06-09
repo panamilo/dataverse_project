@@ -5,6 +5,7 @@ import AppHeader from './components/Bars/AppHeader';
 import ArticleList from './components/Article/ArticleList';
 import ArticleAdd from './components/Article/ArticleAdd';
 import ArticleEdit from './components/Article/ArticleEdit';
+import ArticlesFiltered from './components/Article/ArticlesFiltered';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
 function App()  {
@@ -29,6 +30,7 @@ function App()  {
      <Route path="/articles" element={<ArticleList />} />
      <Route path="/articleAdd" element={<ArticleAdd />} />
      <Route path="/article/:id" element={<ArticleEdit />} />
+     <Route path="/articlesbycat/:id" element={<ArticlesFiltered />} />
       </Routes>
       </Box>
     
